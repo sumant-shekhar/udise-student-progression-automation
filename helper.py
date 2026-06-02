@@ -26,3 +26,7 @@ def scroll_down(page):
     # scroll to bottom of page
     page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
     time.sleep(0.5)
+
+def get_random_val(min_val, max_val):
+    # return random number as string
+    return str(random.randint(min_val, max_val))

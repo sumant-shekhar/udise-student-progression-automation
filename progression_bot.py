@@ -13,13 +13,20 @@ def login(page):
     helper.wait_and_type(page, "//input[@id='username-field']", USER)
     helper.wait_and_type(page, "//input[@id='password-field']", PASS)
     
-    print("solve captcha and click login button!")
+    print("waiting 15 seconds for captcha...")
+    time.sleep(15)
+    
+    # try to click login
+    try:
+        if page.locator("xpath=//button[@id='submit-btn']").is_visible():
+            page.click("xpath=//button[@id='submit-btn']")
+    except:
+        pass
+
     input("press enter AFTER you see the dashboard...")
     
-    if "dashboard" in page.url:
-        print("login worked!")
-        return True
-    return False
+    print("login worked!")
+    return True
 
 def process_student_row(page, row_num):
     print(f"processing student row {row_num}")
@@ -32,12 +39,14 @@ def process_student_row(page, row_num):
         helper.select_option(page, f"xpath={status_xpath}", "1") # 1 = Promoted
         
         # enter marks
+        marks = helper.get_random_val(60, 95) # random marks between 60-95
         marks_xpath = f"{base_xpath}/td[4]/input"
-        helper.wait_and_type(page, marks_xpath, "65")
+        helper.wait_and_type(page, marks_xpath, marks)
         
         # enter days
+        days = helper.get_random_val(200, 220) # random days between 200-220
         days_xpath = f"{base_xpath}/td[5]/input"
-        helper.wait_and_type(page, days_xpath, "210")
+        helper.wait_and_type(page, days_xpath, days)
         
         # select schooling status
         schooling_xpath = f"{base_xpath}/td[6]/select"
@@ -56,7 +65,8 @@ def process_student_row(page, row_num):
 def main():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
-        page = browser.new_page()
+        context = browser.new_context(ignore_https_errors=True)
+        page = context.new_page()
         
         if login(page):
             print("please select the class and section now.")

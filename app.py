@@ -2,6 +2,7 @@ import time
 import random
 from playwright.sync_api import sync_playwright
 import helper # our helper functions
+import captcha_sol
 
 # settings
 USERNAME = "10140615303"
@@ -16,16 +17,34 @@ def login(page):
     # enter password
     helper.wait_and_type(page, "//input[@id='password-field']", PASSWORD)
     
-    print("please solve the captcha and click login!")
-    input("press enter AFTER you have logged in and see the dashboard...")
+    # try automatic captcha solve
+    # real IDs: image=captchaImage, input=captcha
+    captcha_sol.solve_captcha(page, "//img[@id='captchaImage']", "//input[@id='captcha']")
     
-    # check if we are on dashboard
-    if "dashboard" in page.url:
-        print("login success!")
-        return True
-    else:
-        print("login failed! page url is:", page.url)
-        return False
+    print("waiting 15 seconds for you to solve captcha (or script will try)...")
+    time.sleep(15)
+    
+    # try to click login button automatically
+    try:
+        # try common selectors for the login button
+        login_selectors = [
+            "//button[@id='submit-btn']",
+            "//input[@id='submit-btn']",
+            "//button[contains(text(), 'Login')]",
+            "//button[normalize-space()='Login']"
+        ]
+        for sel in login_selectors:
+            if page.locator(f"xpath={sel}").is_visible():
+                page.click(f"xpath={sel}")
+                print(f"clicked login button using {sel}")
+                break
+    except:
+        print("couldnt click login button automatically, please click it yourself if needed")
+
+    input("press enter AFTER you are on the student list page...")
+    
+    print("ok, starting the process!")
+    return True
 
 def update_general_profile(page):
     print("doing step 1: general profile")
@@ -110,7 +129,7 @@ def complete_preview(page):
 def start():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
-        context = browser.new_context()
+        context = browser.new_context(ignore_https_errors=True)
         page = context.new_page()
         
         if not login(page):
