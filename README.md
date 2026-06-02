@@ -34,28 +34,34 @@ if the website changes and buttons stop working:
 - press ENTER in the terminal only when you are on the correct page!
 
 ## app.py logic
+
 This file is used for:
+
 1. doing step 1: general profile
-    a. # check phone number (if 999... then change it)
-    b. # select blood group if empty
-    c. # click save
-    d. # click ok on alert
-    e. # click next
+   a. check phone number (if 999... then change it)
+   b. select blood group if empty
+   c. click save
+   d. click ok on alert
+   e. click next
+
 2. doing step 2: enrolment profile
-    a. # scroll down to bottom
-    b. # click save
-    c. # click ok on alert
-    d. # click next
+   a. scroll down to bottom
+   b. click save
+   c. click ok on alert
+   d. click next
+
 3. doing step 3: facility profile
-    a. # scroll down to bottom
-    b. # click save
-    c. # click ok on alert
-    d. # click next
+   a. scroll down to bottom
+   b. click save
+   c. click ok on alert
+   d. click next
+
 4. doing step 4: preview
-    a. # scroll down to bottom
-    b. # click complete data
-    c. # confirm alert
-    d. # double confirm alert
+   a. scroll down to bottom
+   b. click complete data
+   c. confirm alert
+   d. double confirm alert
+
 and basic browser stuff login and student loop.
 
 ## progression_bot.py logic
