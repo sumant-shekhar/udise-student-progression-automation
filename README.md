@@ -36,7 +36,7 @@ if the website changes and buttons stop working:
 ## app.py logic
 
 This file is used for:
-
+```
 1. doing step 1: general profile
    a. check phone number (if 999... then change it)
    b. select blood group if empty
@@ -61,7 +61,7 @@ This file is used for:
    b. click complete data
    c. confirm alert
    d. double confirm alert
-
+```
 and basic browser stuff login and student loop.
 
 ## progression_bot.py logic
