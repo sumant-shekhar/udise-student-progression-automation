@@ -17,26 +17,27 @@ echo "   Python $PYTHON_VERSION found"
 # Create virtual environment
 if [ ! -d "venv" ]; then
     echo "📁 Creating virtual environment..."
-    python3 -m venv venv
+    python3 -m venv .venv
 fi
 
 # Activate virtual environment
 echo "✅ Activating virtual environment..."
-source venv/bin/activate
+source .venv/bin/activate
 
 # Install dependencies
 echo "📦 Installing dependencies..."
-pip install -q -r requirements.txt
+pip install -r requirements.txt
 
-# Install Playwright browsers
+# Install Playwright browsers without triggering system apt checks
 echo "🌐 Installing Playwright browsers..."
-playwright install -q chromium
+playwright install chromium
+
 
 # Check for .env file
 if [ ! -f ".env" ]; then
     echo "⚠️  .env file not found!"
     echo "   Creating .env from template..."
-    cp .env.example .env
+    cp .env.creid .env
     echo "   ⚠️  Please update .env with your UDISE+ credentials"
 fi
 

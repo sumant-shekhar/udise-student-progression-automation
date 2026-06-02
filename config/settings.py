@@ -1,14 +1,8 @@
-"""
-Configuration settings for UDISE+ Student Progression Automation
-"""
-import os
-from dotenv import load_dotenv
 
-load_dotenv()
 
 # Credentials
-USERNAME = os.getenv("UDISE_USERNAME", "10140806703")
-PASSWORD = os.getenv("UDISE_PASSWORD", "Pankaj@123.123")
+USERNAME = '10140806703'
+PASSWORD = 'Pankaj@123.123'
 
 # Application URLs
 LOGIN_URL = "https://sdms.udiseplus.gov.in/p0/v1/login?state-id=110"
