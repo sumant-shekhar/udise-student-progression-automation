@@ -16,15 +16,15 @@ def login(page):
     # enter password
     helper.wait_and_type(page, "//input[@id='password-field']", PASSWORD)
     
-    print("please solve the captcha now!")
-    time.sleep(15) # wait for me to solve captcha
+    print("please solve the captcha and click login!")
+    input("press enter AFTER you have logged in and see the dashboard...")
     
     # check if we are on dashboard
     if "dashboard" in page.url:
         print("login success!")
         return True
     else:
-        print("login failed!")
+        print("login failed! page url is:", page.url)
         return False
 
 def update_general_profile(page):
@@ -140,6 +140,7 @@ def start():
                 break
                 
         print(f"done! processed {count} students")
+        input("all done! press enter to close the browser...")
         browser.close()
 
 if __name__ == "__main__":

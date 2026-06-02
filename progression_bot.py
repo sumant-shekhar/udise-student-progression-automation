@@ -13,8 +13,8 @@ def login(page):
     helper.wait_and_type(page, "//input[@id='username-field']", USER)
     helper.wait_and_type(page, "//input[@id='password-field']", PASS)
     
-    print("waiting 15 seconds for captcha...")
-    time.sleep(15)
+    print("solve captcha and click login button!")
+    input("press enter AFTER you see the dashboard...")
     
     if "dashboard" in page.url:
         print("login worked!")
@@ -69,6 +69,8 @@ def main():
                     print("stopped or finished the list.")
                     break
                 time.sleep(1)
+            
+            input("finished! press enter to close browser...")
                 
         browser.close()
 
