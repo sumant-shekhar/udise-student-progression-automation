@@ -1,5 +1,8 @@
 # GEFP Update Script — Walkthrough
-
+    - G = general profile
+    - E = enrolment profile
+    - F = facility profile
+    - p = preview
 ---
 
 ## `update_general_profile(page)` — Step 1: Fix the basic student info
