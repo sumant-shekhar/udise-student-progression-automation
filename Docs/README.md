@@ -2,6 +2,13 @@
 
 this bot helps to fill student data on udise plus website automatically. i made this because doing it manually takes too much time.
 
+# Project Documentation
+
+Please check the following sections for more details:
+* [GEFP Update Details](docs/detail-GEFP-update.md)
+* [Login Details](docs/detail-login.md)
+* [Project Walkthrough](docs/WALKTHROUGH.md)
+
 ## how to use
 
 1. install python
