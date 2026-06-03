@@ -3,8 +3,8 @@ from playwright.sync_api import sync_playwright
 import helper
 
 # user details
-USER = "10140806703"
-PASS = "Pankaj@123.123"
+USER = "USERNAME"
+PASS = "PASSWORD"
 
 def login(page):
     print("logging in to progression site...")

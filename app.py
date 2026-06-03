@@ -5,8 +5,8 @@ import helper # our helper functions
 import captcha_sol
 
 # settings
-USERNAME = "10140615303"
-PASSWORD = "58#wwhLG"
+USERNAME = "USERNAME"
+PASSWORD = "PASSWORD"
 
 def login(page):
     print("logging in...")

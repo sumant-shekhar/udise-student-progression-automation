@@ -1,0 +1,42 @@
+password-field - //*[@id="password-field"]
+username-field - //*[@id="username-field"]
+captcha - //*[@id="captcha"]
+Login - //SPAN[normalize-space(text())='Login']
+Close - //BUTTON[normalize-space(text())='Close']
+Close - //BUTTON[normalize-space(text())='Close']
+Student Movement and Progression - //SPAN[normalize-space(text())='Student Movement and Progression']
+Progression Activity - //SPAN[normalize-space(text())='Progression Activity']
+Select Class
+I
+II
+III
+IV
+V
+VI
+VII
+VIII - /html/body/app-root/app-admin-dashboard/div[2]/div[2]/main/div/div/div/app-promotion/div[1]/div[2]/div/ul/li[1]/select
+Select Section
+A - /html/body/app-root/app-admin-dashboard/div[2]/div[2]/main/div/div/div/app-promotion/div[1]/div[2]/div/ul/li[2]/select
+Go - //BUTTON[normalize-space(text())='Go']
+1 – 36 of 36 - /html/body/app-root/app-admin-dashboard/div[2]/div[2]/main/div/div/div/app-promotion/div[2]/div/div[2]/div[2]/mat-paginator/div/div/div[2]/div
+DIV - /html/body/app-root/app-admin-dashboard/div[2]/div[2]/main/div/div/div/app-promotion/div[2]/div/div[2]/div[2]/mat-paginator/div/div/div[1]/mat-form-field/div[1]/div/div[2]/div
+200 - //SPAN[normalize-space(text())='200']
+UpdateCorrection ProgressionCorrection Schooling - /html/body/app-root/app-admin-dashboard/div[2]/div[2]/main/div/div/div/app-promotion/div[3]/div/table/tbody/tr[1]/td[6]
+School Dashboard - //SPAN[normalize-space(text())='School Dashboard']
+View Section Wise - //*[@id="v-pills-messages-tab"]
+View/Manage - //A[normalize-space(text())='View/Manage']
+GP - //A[normalize-space(text())='GP']
+Select
+A+
+A-
+B+
+B-
+O+
+O-
+AB+
+AB-
+Under Investigation - Result will be updated soon - //*[@id="bloodGroup"]
+Next - //SPAN[normalize-space(text())='Next']
+Next - //SPAN[normalize-space(text())='Next']
+Next - //SPAN[normalize-space(text())='Next']
+Back To School Dashboard - //SPAN[normalize-space(text())='Back To School Dashboard']
