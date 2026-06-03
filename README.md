@@ -9,13 +9,42 @@ Please check the following sections for more details:
 * [Login Details](detail-login.md)
 * [Project Walkthrough](WALKTHROUGH.md)
 
+## Quick Start
+
+The easiest way to get started is using the included `Makefile`:
+
+```bash
+make setup          # Install dependencies and browsers
+make run-app        # Run student profile entry bot
+make run-bot        # Run promotion/progression bot
+```
+
 ## how to use
 
+### Option 1: Using Makefile (Recommended)
+1.  **Setup:** `make setup`
+2.  **Configuration:** Edit the username and password in `app.py` or `progression_bot.py`.
+3.  **Run:** 
+    *   For profile entry: `make run-app`
+    *   For promotion/progression: `make run-bot`
+
+### Option 2: Manual Setup
 1. install python
-2. install playwright: `pip install playwright`
+2. install requirements: `pip install -r requirements.txt`
 3. install browsers: `playwright install chromium`
 4. edit the username and password in `app.py` or `progression_bot.py`
-5. run it: `python app.py`
+5. run it: `python app.py` or `python progression_bot.py`
+
+## All Commands
+
+| Command | Description |
+| --- | --- |
+| `make setup` | Install python requirements and playwright browsers |
+| `make run-app` | Start the student profile entry bot (`app.py`) |
+| `make run-bot` | Start the promotion/progression bot (`progression_bot.py`) |
+| `make find-xpaths` | Run the XPath finder tool |
+| `make install-ocr` | Install dependencies for automatic captcha solving |
+| `make clean` | Remove Python cache files |
 
 ## files
 - `app.py`: for student profile entry (GP, EP, FP, PP)
