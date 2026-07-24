@@ -1,37 +1,39 @@
-.PHONY: setup install install-browsers run-app run-bot find-xpaths clean help
+.PHONY: setup venv install install-browsers install-ocr run-app run-bot find-xpaths clean help
 
 # ── Variables ──────────────────────────────────────────────
-PYTHON = python3
+PYTHON ?= python3
+VENV = .venv
+VENV_PYTHON = $(VENV)/bin/python
+PIP = $(VENV_PYTHON) -m pip
 
 # ── Setup ──────────────────────────────────────────────────
-setup: install install-browsers
+setup: venv install install-browsers
 	@echo "Setup complete. Run 'make run-app' to start."
 
 venv:
-	$(PYTHON) -m venv .venv
-source:
-	@echo "Run 'source .venv/bin/activate' to activate the virtual environment."
-	source .venv/bin/activate
-install:
+	$(PYTHON) -m venv $(VENV)
+	@echo "Created virtual environment at $(VENV)."
+
+install: venv
 	@echo "Installing dependencies..."
-	pip install -r requirements.txt
+	$(PIP) install -r requirements.txt
 
-install-browsers:
-	playwright install chromium
+install-browsers: install
+	$(VENV_PYTHON) -m playwright install chromium
 
-install-ocr:
-	pip install pytesseract pillow
+install-ocr: install
+	$(PIP) install pytesseract pillow
 	@echo "Also install tesseract: sudo apt install tesseract-ocr"
 
 # ── Run ────────────────────────────────────────────────────
 run-app:
-	$(PYTHON) app.py
+	$(VENV_PYTHON) app.py
 
 run-bot:
-	$(PYTHON) progression_bot.py
+	$(VENV_PYTHON) progression_bot.py
 
 find-xpaths:
-	$(PYTHON) get_xpaths.py
+	$(VENV_PYTHON) get_xpaths.py
 
 # ── Clean ──────────────────────────────────────────────────
 clean:
@@ -43,10 +45,9 @@ help:
 	@echo ""
 	@echo "UDISE Automation — available commands:"
 	@echo ""
-	@echo "  make venv           Create a virtual environment"
-	@echo "  make source         Activate the virtual environment"
-	@echo "  make install        Install Python dependencies"
-	@echo "  make install-browsers  Install Playwright browsers"
-	@echo "  make install-ocr    Install captcha solver dependencies"
-	@echo "  make clean          Remove Python cache files"
+	@echo "  make venv             Create a virtual environment"
+	@echo "  make install          Install Python dependencies into the venv"
+	@echo "  make install-browsers Install Playwright browsers into the venv"
+	@echo "  make install-ocr      Install captcha solver dependencies into the venv"
+	@echo "  make clean            Remove Python cache files"
 	@echo ""
