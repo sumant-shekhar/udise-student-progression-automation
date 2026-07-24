@@ -7,8 +7,14 @@ A small local automation script for Udise student progression and profile entry.
 1. Install dependencies:
 
 ```bash
-pip install -r requirements.txt
-playwright install chromium
+make setup
+```
+
+If you do not want to use the helper, you can still install manually:
+
+```bash
+python3 -m pip install -r requirements.txt
+python3 -m playwright install chromium
 ```
 
 2. Edit your credentials in `app.py` or `progression_bot.py`.
@@ -16,9 +22,16 @@ playwright install chromium
 3. Run the script you need:
 
 ```bash
-python app.py
+make run-app
 # or
-python progression_bot.py
+make run-bot
+```
+
+If you do not want to use `make`, you can also run them directly:
+
+```bash
+.venv/bin/python app.py
+.venv/bin/python progression_bot.py
 ```
 
 ## Files
