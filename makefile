@@ -7,7 +7,13 @@ PYTHON = python3
 setup: install install-browsers
 	@echo "Setup complete. Run 'make run-app' to start."
 
+venv:
+	$(PYTHON) -m venv .venv
+source:
+	@echo "Run 'source .venv/bin/activate' to activate the virtual environment."
+	source .venv/bin/activate
 install:
+	@echo "Installing dependencies..."
 	pip install -r requirements.txt
 
 install-browsers:
@@ -37,10 +43,10 @@ help:
 	@echo ""
 	@echo "UDISE Automation — available commands:"
 	@echo ""
-	@echo "  make setup          Install everything needed to run"
-	@echo "  make run-app        Run student profile entry bot"
-	@echo "  make run-bot        Run promotion/progression bot"
-	@echo "  make find-xpaths    Run xpath finder (click buttons in browser)"
+	@echo "  make venv           Create a virtual environment"
+	@echo "  make source         Activate the virtual environment"
+	@echo "  make install        Install Python dependencies"
+	@echo "  make install-browsers  Install Playwright browsers"
 	@echo "  make install-ocr    Install captcha solver dependencies"
 	@echo "  make clean          Remove Python cache files"
 	@echo ""

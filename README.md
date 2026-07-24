@@ -1,118 +1,34 @@
 # Student Progression Bot
 
-this bot helps to fill student data on udise plus website automatically. i made this because doing it manually takes too much time.
-
-# Project Documentation
-
-Please check the following sections for more details:
-* [GEFP Update Details](detail-GEFP-update.md)
-* [Login Details](detail-login.md)
-* [Project Walkthrough](WALKTHROUGH.md)
+A small local automation script for Udise student progression and profile entry. This is an old repo for a friend and not actively maintained.
 
 ## Quick Start
 
-The easiest way to get started is using the included `Makefile`:
+1. Install dependencies:
 
 ```bash
-make setup          # Install dependencies and browsers
-make run-app        # Run student profile entry bot
-make run-bot        # Run promotion/progression bot
+pip install -r requirements.txt
+playwright install chromium
 ```
 
-## how to use
+2. Edit your credentials in `app.py` or `progression_bot.py`.
 
-### Option 1: Using Makefile (Recommended)
-1.  **Setup:** `make setup`
-2.  **Configuration:** Edit the username and password in `app.py` or `progression_bot.py`.
-3.  **Run:** 
-    *   For profile entry: `make run-app`
-    *   For promotion/progression: `make run-bot`
+3. Run the script you need:
 
-### Option 2: Manual Setup
-1. install python
-2. install requirements: `pip install -r requirements.txt`
-3. install browsers: `playwright install chromium`
-4. edit the username and password in `app.py` or `progression_bot.py`
-5. run it: `python app.py` or `python progression_bot.py`
-
-## All Commands
-
-| Command | Description |
-| --- | --- |
-| `make setup` | Install python requirements and playwright browsers |
-| `make run-app` | Start the student profile entry bot (`app.py`) |
-| `make run-bot` | Start the promotion/progression bot (`progression_bot.py`) |
-| `make find-xpaths` | Run the XPath finder tool |
-| `make install-ocr` | Install dependencies for automatic captcha solving |
-| `make clean` | Remove Python cache files |
-
-## files
-- `app.py`: for student profile entry (GP, EP, FP, PP)
-- `progression_bot.py`: for student promotion/progression (marks and days)
-- `helper.py`: contains common functions like wait_and_click
-- `get_xpaths.py`: run this and click buttons to find their xpaths
-- `captcha_sol.py`: trying to solve captcha with AI/OCR
-
-## automatic captcha (if you want)
-if you want the script to try solving captcha by itself:
-1. install tesseract: `sudo apt update && sudo apt install tesseract-ocr`
-2. install python tools: `pip install pytesseract pillow`
-*if you get permission error run this first:* `sudo chown -R $USER:$USER .venv`
-
-## finding new buttons
-if the website changes and buttons stop working:
-1. run `python3 get_xpaths.py`
-2. click the buttons in the browser that opens
-3. look at `found_xpaths.txt` to see the new paths
-
-## note
-- the script waits 15 seconds for captcha. you can solve it yourself or wait for the script.
-- press ENTER in the terminal only when you are on the correct page!
-
-## app.py logic
-
-This file is used for:
+```bash
+python app.py
+# or
+python progression_bot.py
 ```
-1. doing step 1: general profile
-   a. check phone number (if 999... then change it)
-   b. select blood group if empty
-   c. click save
-   d. click ok on alert
-   e. click next
 
-2. doing step 2: enrolment profile
-   a. scroll down to bottom
-   b. click save
-   c. click ok on alert
-   d. click next
+## Files
+- `app.py`: update student profile sections (GP, EP, FP, PP)
+- `progression_bot.py`: update promotion/progression rows
+- `helper.py`: shared browser helper functions
+- `get_xpaths.py`: tool to locate element xpaths
+- `captcha_sol.py`: optional captcha solving helper
 
-3. doing step 3: facility profile
-   a. scroll down to bottom
-   b. click save
-   c. click ok on alert
-   d. click next
-
-4. doing step 4: preview
-   a. scroll down to bottom
-   b. click complete data
-   c. confirm alert
-   d. double confirm alert
-```
-and basic browser stuff login and student loop.
-
-## progression_bot.py logic
-This file is for the promotion page:
-1. select progression status (Promoted)
-2. enter marks (65%)
-3. enter number of days (210)
-4. select schooling status (Same school)
-5. click update button
-it loops through all rows in the table until it finishes.
-
-## helper.py logic
-Contains simple functions to make scripts shorter:
-1. wait_and_click: wait for selector then click
-2. wait_and_type: wait for selector then clear and type
-3. select_option: wait for select dropdown then choose
-4. scroll_down: scroll to bottom of page
-5. get_random_val: returns random string number between min and max
+## Notes
+- The script waits for captcha before continuing.
+- Press ENTER only when you are on the correct page.
+- This repo is old and was used locally; keep that in mind.
